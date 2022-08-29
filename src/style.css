@@ -1,1 +1,66 @@
+body {
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgba(216, 241, 230, 0.46) 0.1%,
+    rgba(233, 226, 226, 0.28) 90.1%
+  );
+  color: #142d4c;
+}
+.app-wrapper {
+  max-width: 800px;
+  margin: 30px auto;
+  border: 0.6px solid #403f48;
+  border-radius: 10px;
+  padding: 20px;
+  background: #9fd3c6;
+}
+.cities-list li {
+  list-style: none;
+  display: inline;
+  font-size: 15px;
+  font-weight: 200;
+  padding-right: 20px;
+}
+.cities-list {
+  padding-left: 0;
+}
+.displayed-city {
+  font-size: 50px;
+  font-weight: 500;
+  margin-top: 15px;
+}
+.displayed-date li {
+  list-style: none;
+}
+.displayed-date {
+  font-size: 17px;
+  opacity: 0.8;
+  line-height: 1;
+  padding-left: 0;
+  margin-bottom: 30px;
+}
+.displayed-temperature {
+  font-size: 50px;
+  font-weight: 500;
+  margin-top: 15px;
+}
 
+.units {
+  font-size: 17px;
+  opacity: 0.8;
+  line-height: 1;
+  margin-bottom: 30px;
+}
+
+.displayed-emoji {
+  font-size: 120px;
+  margin: -40px 0 0 0;
+}
+.displayed-weather-specification li {
+  list-style: none;
+}
+
+.displayed-weather-specification {
+  font-size: 13px;
+  opacity: 0.8;
+}

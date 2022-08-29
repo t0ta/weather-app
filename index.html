@@ -16,7 +16,6 @@
   <body>
     <div class="container">
       <div class="app-wrapper">
-        <h1>Weather App</h1>
         <ul class="cities-list">
           <li>NEW YORK</li>
           <li>LONDON</li>
@@ -24,35 +23,41 @@
           <li>SYDNEY</li>
           <li>LISBON</li>
         </ul>
-        <h2>City</h2>
-        <ul>
-          <li>Date</li>
-          <li>Description</li>
-        </ul>
         <div class="row">
-          <div class="col">☁️</div>
-          <div class="col">
-            Temp
-            <div>°C | F°</div>
+          <div class="col-3 displayed-city">
+            City
+            <ul class="displayed-date">
+              <li>Date</li>
+              <li>Description</li>
+            </ul>
           </div>
           <div class="col">
+            <div class="displayed-temperature">Temp</div>
+            <div class="units">°C | F°</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6 displayed-emoji">☁️</div>
+          <div class="col displayed-weather-specification">
             <ul>
               <li>
                 Humidity
                 <div>52%</div>
               </li>
+              <br />
               <li>
                 UV Index
                 <div>2 of 10</div>
               </li>
             </ul>
           </div>
-          <div class="col">
+          <div class="col-4 displayed-weather-specification">
             <ul>
               <li>
                 Feles like
                 <div>25°C</div>
               </li>
+              <br />
               <li>
                 Wind
                 <div>15 mps</div>
