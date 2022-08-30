@@ -6,6 +6,7 @@ body {
   );
   color: #142d4c;
 }
+
 .app-wrapper {
   max-width: 800px;
   margin: 30px auto;
@@ -62,5 +63,12 @@ body {
 
 .displayed-weather-specification {
   font-size: 13px;
+  opacity: 0.8;
+}
+
+.footer {
+  font-size: 13px;
+  margin: 0 auto;
+  text-align: center;
   opacity: 0.8;
 }
