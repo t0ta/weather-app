@@ -49,22 +49,19 @@ body {
   font-weight: 500;
   margin-top: 15px;
 }
-
 .units {
   font-size: 15px;
   opacity: 0.8;
   line-height: 1;
   margin-bottom: 30px;
 }
-
 .displayed-emoji {
-  font-size: 120px;
-  margin: -40px 0 0 0;
+  font-size: 100px;
+  margin-top: -24px;
 }
 .displayed-weather-specification li {
   list-style: none;
 }
-
 .displayed-weather-specification {
   font-size: 13px;
   opacity: 0.8;
