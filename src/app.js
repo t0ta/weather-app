@@ -27,13 +27,11 @@ function formatDate(timestemp) {
 }
 
 function displayForecast(response) {
-  console.log(response.data);
   let cityElement = document.getElementById("city");
   cityElement.innerHTML = response.data.name;
 
   let descriptionElement = document.getElementById("description");
   descriptionElement.innerHTML = response.data.weather[0].description;
-  console.log(descriptionElement);
 
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.getElementById("temperature");
