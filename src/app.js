@@ -3,6 +3,29 @@ let units = "metric";
 let city = "Lisbon";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
 
+function formatDate(timestemp) {
+  let date = new Date(timestemp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  return `${day}, ${hours}:${minutes}`;
+}
+
 function displayForecast(response) {
   console.log(response.data);
   let cityElement = document.getElementById("city");
@@ -10,6 +33,7 @@ function displayForecast(response) {
 
   let descriptionElement = document.getElementById("description");
   descriptionElement.innerHTML = response.data.weather[0].description;
+  console.log(descriptionElement);
 
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.getElementById("temperature");
@@ -26,6 +50,9 @@ function displayForecast(response) {
   let wind = response.data.wind.speed;
   let windElement = document.getElementById("wind");
   windElement.innerHTML = `${wind} kph`;
+
+  let dateElement = document.getElementById("date");
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 
 axios.get(apiUrl).then(displayForecast);
