@@ -34,11 +34,12 @@ body {
   list-style: none;
 }
 .displayed-date {
-  font-size: 17px;
+  font-size: 15px;
   opacity: 0.8;
-  line-height: 1;
+  line-height: 1.3;
   padding-left: 0;
   margin-bottom: 30px;
+  font-weight: 300;
 }
 .displayed-date li:first-letter {
   text-transform: capitalize;
@@ -50,7 +51,7 @@ body {
 }
 
 .units {
-  font-size: 17px;
+  font-size: 15px;
   opacity: 0.8;
   line-height: 1;
   margin-bottom: 30px;
