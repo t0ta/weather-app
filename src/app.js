@@ -27,6 +27,7 @@ function formatDate(timestemp) {
 }
 
 function displayForecast(response) {
+  console.log(response.data);
   let cityElement = document.getElementById("city");
   cityElement.innerHTML = response.data.name;
 
@@ -51,6 +52,13 @@ function displayForecast(response) {
 
   let dateElement = document.getElementById("date");
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
+
+  let iconElement = document.getElementById("icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 axios.get(apiUrl).then(displayForecast);
