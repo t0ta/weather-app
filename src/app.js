@@ -1,8 +1,3 @@
-let apiKey = "5b4060dc448ce090c0895c5c8af48e68";
-let units = "metric";
-let city = "Lisbon";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
-
 function formatDate(timestemp) {
   let date = new Date(timestemp);
   let hours = date.getHours();
@@ -27,7 +22,6 @@ function formatDate(timestemp) {
 }
 
 function displayForecast(response) {
-  console.log(response.data);
   let cityElement = document.getElementById("city");
   cityElement.innerHTML = response.data.name;
 
@@ -61,4 +55,20 @@ function displayForecast(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
-axios.get(apiUrl).then(displayForecast);
+function searchCity(city) {
+  let apiKey = "5b4060dc448ce090c0895c5c8af48e68";
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.getElementById("city-input");
+  searchCity(cityInputElement.value);
+}
+
+searchCity("Kyiv");
+
+let form = document.getElementById("search-form");
+form.addEventListener("submit", handleSubmit);

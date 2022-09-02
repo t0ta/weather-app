@@ -15,6 +15,19 @@ body {
   padding: 20px;
   background: #9fd3c6;
 }
+.city-form {
+  border: 1px solid #37516f;
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgba(216, 241, 230, 0.46) 0.1%,
+    rgba(233, 226, 226, 0.28) 90.1%
+  );
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: 200;
+  position: relative;
+  padding: 0 10px 0 10px;
+}
 .cities-list li {
   list-style: none;
   display: inline;
@@ -25,6 +38,7 @@ body {
 .cities-list {
   padding-left: 0;
 }
+
 .displayed-city {
   font-size: 50px;
   font-weight: 500;
