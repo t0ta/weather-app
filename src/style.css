@@ -64,7 +64,7 @@ body {
   margin-top: 15px;
 }
 .units {
-  font-size: 15px;
+  font-size: 18px;
   opacity: 0.8;
   line-height: 1;
   margin-bottom: 30px;
@@ -87,4 +87,10 @@ body {
   margin: 0 auto;
   text-align: center;
   opacity: 0.8;
+}
+
+.displayed-temperature .active {
+  color: #142d4c;
+  cursor: default;
+  text-decoration: none;
 }

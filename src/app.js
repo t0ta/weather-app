@@ -28,20 +28,22 @@ function displayForecast(response) {
   let descriptionElement = document.getElementById("description");
   descriptionElement.innerHTML = response.data.weather[0].description;
 
-  let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.getElementById("temperature");
-  temperatureElement.innerHTML = `${temperature}°C`;
+  let temperature = Math.round(response.data.main.temp);
+  temperatureElement.innerHTML = temperature;
 
-  let humidity = response.data.main.humidity;
+  celsiusTemperature = response.data.main.temp;
+
   let humidityElement = document.getElementById("humidity");
+  let humidity = response.data.main.humidity;
   humidityElement.innerHTML = `${humidity}%`;
 
-  let feelsLike = Math.round(response.data.main.feels_like);
   let feelsLikeElement = document.getElementById("feels-like");
+  let feelsLike = Math.round(response.data.main.feels_like);
   feelsLikeElement.innerHTML = `${feelsLike}°C`;
 
-  let wind = response.data.wind.speed;
   let windElement = document.getElementById("wind");
+  let wind = response.data.wind.speed;
   windElement.innerHTML = `${wind} kph`;
 
   let dateElement = document.getElementById("date");
@@ -68,7 +70,32 @@ function handleSubmit(event) {
   searchCity(cityInputElement.value);
 }
 
-searchCity("Kyiv");
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let temperatureElement = document.getElementById("temperature");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let temperatureElement = document.getElementById("temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
 
 let form = document.getElementById("search-form");
 form.addEventListener("submit", handleSubmit);
+
+let fahrenheitLink = document.getElementById("fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusLink = document.getElementById("celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+searchCity("Kyiv");
