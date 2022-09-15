@@ -68,6 +68,10 @@ body {
   opacity: 0.8;
   line-height: 1;
   margin-bottom: 30px;
+  text-decoration: none;
+}
+.unit-style {
+  text-decoration: none;
 }
 .displayed-icon {
   font-size: 100px;
@@ -92,5 +96,4 @@ body {
 .displayed-temperature .active {
   color: #142d4c;
   cursor: default;
-  text-decoration: none;
 }
