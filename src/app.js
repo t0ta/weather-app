@@ -87,6 +87,31 @@ function displayCelsiusTemperature(event) {
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
+function displayNewYorkWeather(event) {
+  event.preventDefault();
+  searchCity("New York");
+}
+
+function displayLondonWeather(event) {
+  event.preventDefault();
+  searchCity("London");
+}
+
+function displayTokyoWeather(event) {
+  event.preventDefault();
+  searchCity("Tokyo");
+}
+
+function displaySydneyWeather(event) {
+  event.preventDefault();
+  searchCity("Sydney");
+}
+
+function displayLisbonWeather(event) {
+  event.preventDefault();
+  searchCity("Lisbon");
+}
+
 let celsiusTemperature = null;
 
 let form = document.getElementById("search-form");
@@ -97,5 +122,20 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 let celsiusLink = document.getElementById("celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+let newYorkElement = document.getElementById("new-york");
+newYorkElement.addEventListener("click", displayNewYorkWeather);
+
+let londonElement = document.getElementById("london");
+londonElement.addEventListener("click", displayLondonWeather);
+
+let tokyoElement = document.getElementById("tokyo");
+tokyoElement.addEventListener("click", displayTokyoWeather);
+
+let sydneyElement = document.getElementById("sydney");
+sydneyElement.addEventListener("click", displaySydneyWeather);
+
+let lisbonElement = document.getElementById("lisbon");
+lisbonElement.addEventListener("click", displayLisbonWeather);
 
 searchCity("Kyiv");

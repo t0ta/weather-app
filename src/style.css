@@ -38,7 +38,16 @@ body {
 .cities-list {
   padding-left: 0;
 }
+.city {
+  text-decoration: none;
+  color: #142d4c;
+  cursor: default;
+}
 
+.city:hover {
+  color: #142d4c;
+  font-weight: 300;
+}
 .displayed-city {
   font-size: 50px;
   font-weight: 500;
