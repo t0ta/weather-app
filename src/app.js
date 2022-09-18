@@ -57,11 +57,18 @@ function displayForecast(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
+function catchSearchError(error) {
+  console.log(error);
+  let errorMessage = document.getElementById("error-message");
+  errorMessage.innerHTML = `Ops, city not found... Please, enter correct name.`;
+  errorMessage.classList.add("error");
+}
+
 function searchCity(city) {
   let apiKey = "5b4060dc448ce090c0895c5c8af48e68";
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
-  axios.get(apiUrl).then(displayForecast);
+  axios.get(apiUrl).then(displayForecast).catch(catchSearchError);
 }
 
 function handleSubmit(event) {

@@ -37,6 +37,7 @@
               class="city-form shadow-sm"
             />
           </form>
+          <!-- <div id="error-message"></div> -->
         </div>
         <ul class="cities-list">
           <li><a href="#" id="new-york" class="city">NEW YORK</a></li>
@@ -45,53 +46,55 @@
           <li><a href="#" id="sydney" class="city">SYDNEY</a></li>
           <li><a href="#" id="lisbon" class="city">LISBON</a></li>
         </ul>
-        <div class="row">
-          <div class="col-3 displayed-city">
-            <span id="city"></span>
-            <ul class="displayed-date">
-              <li id="date"></li>
-              <li id="description"></li>
-            </ul>
+        <span id="error-message" class="error-message">
+          <div class="row">
+            <div class="col-3 displayed-city">
+              <span id="city"></span>
+              <ul class="displayed-date">
+                <li id="date"></li>
+                <li id="description"></li>
+              </ul>
+            </div>
+            <div class="col-3 displayed-icon">
+              <img src="#" alt="#" id="icon" />
+            </div>
+            <div class="col-6 displayed-temperature">
+              <span id="temperature"></span>
+              <span class="units">
+                <a href="#" id="celsius-link" class="active unit-style">°C</a> |
+                <a href="#" id="fahrenheit-link" class="unit-style">F°</a></span
+              >
+            </div>
           </div>
-          <div class="col-3 displayed-icon">
-            <img src="#" alt="#" id="icon" />
+          <div class="row">
+            <div class="col-2 displayed-weather-specification">
+              <ul>
+                <li>
+                  <i class="fa-solid fa-droplet"></i>
+                  Humidity
+                  <div id="humidity"></div>
+                </li>
+              </ul>
+            </div>
+            <div class="col-2 displayed-weather-specification">
+              <ul>
+                <li>
+                  <i class="fa-solid fa-temperature-half"></i>
+                  Feles like
+                  <div id="feels-like"></div>
+                </li>
+              </ul>
+            </div>
+            <div class="col-2 displayed-weather-specification">
+              <ul>
+                <li>
+                  <i class="fa-solid fa-wind"></i> Wind
+                  <div id="wind"></div>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="col-6 displayed-temperature">
-            <span id="temperature"></span>
-            <span class="units">
-              <a href="#" id="celsius-link" class="active unit-style">°C</a> |
-              <a href="#" id="fahrenheit-link" class="unit-style">F°</a></span
-            >
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-2 displayed-weather-specification">
-            <ul>
-              <li>
-                <i class="fa-solid fa-droplet"></i>
-                Humidity
-                <div id="humidity"></div>
-              </li>
-            </ul>
-          </div>
-          <div class="col-2 displayed-weather-specification">
-            <ul>
-              <li>
-                <i class="fa-solid fa-temperature-half"></i>
-                Feles like
-                <div id="feels-like"></div>
-              </li>
-            </ul>
-          </div>
-          <div class="col-2 displayed-weather-specification">
-            <ul>
-              <li>
-                <i class="fa-solid fa-wind"></i> Wind
-                <div id="wind"></div>
-              </li>
-            </ul>
-          </div>
-        </div>
+        </span>
         <footer class="footer">
           <a href="https://github.com/t0ta/weather-app" target="_blank">
             Open-source code
