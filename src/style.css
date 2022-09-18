@@ -109,3 +109,46 @@ body {
 .error {
   color: red;
 }
+.weather-forecast-header {
+  opacity: 0.8;
+  font-size: 14px;
+  margin: 0 20px 20px 0;
+}
+.weather-forecast-card {
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgba(216, 241, 230, 0.46) 0.1%,
+    rgba(233, 226, 226, 0.28) 90.1%
+  );
+  font-size: 15px;
+  line-height: 22px;
+  margin: 0 12px;
+  text-align: center;
+  transition: 150ms ease-in-out;
+  border: 0;
+  margin-bottom: 20px;
+  padding: 10px 0;
+}
+.card:hover {
+  opacity: 0.8;
+}
+.weather-forecast-weekday {
+  line-height: 26px;
+}
+.weather-forecast-icon {
+  font-size: 30px;
+  margin: 10px;
+}
+
+.weather-forecast-temp-max {
+  font-weight: 500;
+}
+.weather-forecast-temp-min {
+  opacity: 0.8;
+}
+.footer {
+  font-size: 13px;
+  margin: 0 auto;
+  text-align: center;
+  opacity: 0.8;
+}
