@@ -18,10 +18,33 @@ function formatDate(timestemp) {
     "Saturday",
   ];
   let day = days[date.getDay()];
-  return `${day}, ${hours}:${minutes}`;
+  return `Last update: ${day}, ${hours}:${minutes}`;
 }
 
-function displayForecast(response) {
+function displayForecast() {
+  let forecastElement = document.getElementById("forecast");
+  let days = ["Sunday", "Monday", "Tuesday", "Wednesday"];
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col-2 card weather-forecast-card">
+        <div class="weather-forecast-weekday">${day}
+          <div>Sep, 19</div>
+        </div>
+        <div class="weather-forecast-icon">🌞</div>
+        <div class="weather-forecast">
+          <span class="weather-forecast-temp-max">20°</span>
+          <span class="weather-forecast-temp-min">12°</span>
+        </div>
+    `;
+    forecastHTML = forecastHTML + `</div>`;
+    forecastHTML = forecastElement.innerHTML = forecastHTML;
+  });
+}
+
+function displayWeather(response) {
   let cityElement = document.getElementById("city");
   cityElement.innerHTML = response.data.name;
 
@@ -68,7 +91,7 @@ function searchCity(city) {
   let apiKey = "5b4060dc448ce090c0895c5c8af48e68";
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
-  axios.get(apiUrl).then(displayForecast).catch(catchSearchError);
+  axios.get(apiUrl).then(displayWeather).catch(catchSearchError);
 }
 
 function handleSubmit(event) {
@@ -146,3 +169,4 @@ let lisbonElement = document.getElementById("lisbon");
 lisbonElement.addEventListener("click", displayLisbonWeather);
 
 searchCity("Kyiv");
+displayForecast();
