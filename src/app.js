@@ -23,7 +23,7 @@ function formatDate(timestemp) {
 
 function displayForecast() {
   let forecastElement = document.getElementById("forecast");
-  let days = ["Sunday", "Monday", "Tuesday", "Wednesday"];
+  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"];
   let forecastHTML = `<div class="row">`;
   days.forEach(function (day) {
     forecastHTML =
@@ -33,7 +33,7 @@ function displayForecast() {
         <div class="weather-forecast-weekday">${day}
           <div>Sep, 19</div>
         </div>
-        <div class="weather-forecast-icon">🌞</div>
+        <div class="weather-forecast-icon">☀️</div>
         <div class="weather-forecast">
           <span class="weather-forecast-temp-max">20°</span>
           <span class="weather-forecast-temp-min">12°</span>
