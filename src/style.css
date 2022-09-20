@@ -106,9 +106,10 @@ body {
   color: #142d4c;
   cursor: default;
 }
-.error {
-  color: red;
+.hidden {
+  display: none;
 }
+
 .weather-forecast-header {
   opacity: 0.8;
   font-size: 14px;
