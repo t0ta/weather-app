@@ -81,10 +81,17 @@ function displayWeather(response) {
 }
 
 function catchSearchError(error) {
-  console.log(error);
-  let errorMessage = document.getElementById("error-message");
-  errorMessage.innerHTML = `Ops, city not found... Please, enter correct name.`;
-  errorMessage.classList.add("error");
+  if (error) {
+    alert("Ops, city not found... Please, enter correct name");
+  }
+  // let errorMessage = document.getElementById("error-message");
+  // form.addEventListener(error, function () {
+  //   if (errorMessage.classList.toString().includes("hidden")) {
+  //     errorMessage.classList.remove("hidden");
+  //   } else {
+  //     errorMessage.classList.add("hidden");
+  //   }
+  // });
 }
 
 function searchCity(city) {
