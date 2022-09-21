@@ -21,7 +21,28 @@ function formatDate(timestemp) {
   return `Last update: ${day}, ${hours}:${minutes}`;
 }
 
-function formatDay(timestemp) {
+function formatForecasdtDate(timestemp) {
+  let date = new Date(timestemp * 1000);
+  let month = date.getMonth();
+  let day = date.getDate();
+  let months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Now",
+    "Dec",
+  ];
+  return `${months[month]}, ${day}`;
+}
+
+function formatForecastDay(timestemp) {
   let date = new Date(timestemp * 1000);
   let day = date.getDay();
   let days = [
@@ -46,10 +67,12 @@ function displayForecast(response) {
         forecastHTML +
         `
       <div class="col-2 card weather-forecast-card">
-        <div class="weather-forecast-weekday">${formatDay(forecastDay.dt)}
-          <div>Sep, 19</div>
+        <div class="weather-forecast-weekday">${formatForecastDay(
+          forecastDay.dt
+        )}
+          <div>${formatForecasdtDate(forecastDay.dt)}</div>
         </div>
-        <img class="weather-forecast-icon" src="http://openweathermap.org/img/wn/${
+        <img class="weather-forecast-icon" src="https://openweathermap.org/img/wn/${
           forecastDay.weather[0].icon
         }@2x.png" alt=""
         />
@@ -107,7 +130,7 @@ function displayWeather(response) {
   let iconElement = document.getElementById("icon");
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
@@ -118,6 +141,7 @@ function catchSearchError(error) {
   if (error) {
     alert("Ops, city not found... Please, enter correct name");
   }
+
   // let errorMessage = document.getElementById("error-message");
   // form.addEventListener(error, function () {
   //   if (errorMessage.classList.toString().includes("hidden")) {
@@ -143,6 +167,7 @@ function handleSubmit(event) {
 
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
+
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
   let temperatureElement = document.getElementById("temperature");
