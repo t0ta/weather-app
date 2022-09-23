@@ -1,27 +1,24 @@
 body {
-  background: radial-gradient(
-    circle at 10% 20%,
-    rgba(216, 241, 230, 0.46) 0.1%,
-    rgba(233, 226, 226, 0.28) 90.1%
-  );
-  color: #142d4c;
+  color: #404969;
 }
 
 .app-wrapper {
+  /* background: #e0fcff; */
+
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgb(239, 246, 249) 0%,
+    rgb(206, 239, 253) 90%
+  );
   max-width: 800px;
   margin: 30px auto;
   border: 0.6px solid #403f48;
   border-radius: 10px;
   padding: 20px;
-  background: #9fd3c6;
 }
 .city-form {
-  border: 1px solid #37516f;
-  background: radial-gradient(
-    circle at 10% 20%,
-    rgba(216, 241, 230, 0.46) 0.1%,
-    rgba(233, 226, 226, 0.28) 90.1%
-  );
+  border: 0.5px solid #404969;
+  background: #bde4f4;
   border-radius: 20px;
   font-size: 15px;
   font-weight: 200;
@@ -49,6 +46,7 @@ body {
   font-weight: 300;
 }
 .displayed-city {
+  color: #ff7f50;
   font-size: 50px;
   font-weight: 500;
   margin-top: 15px;
@@ -89,6 +87,9 @@ body {
 .displayed-weather-specification li {
   list-style: none;
 }
+.displayed-weather-specification ul {
+  padding-left: 0;
+}
 .displayed-weather-specification {
   font-size: 13px;
   opacity: 0.8;
@@ -116,11 +117,12 @@ body {
   margin: 0 20px 20px 0;
 }
 .weather-forecast-card {
-  background: radial-gradient(
+  /* background: radial-gradient(
     circle at 10% 20%,
-    rgba(216, 241, 230, 0.46) 0.1%,
-    rgba(233, 226, 226, 0.28) 90.1%
-  );
+    rgb(239, 246, 249) 0%,
+    rgb(206, 239, 253) 90%
+  ); */
+  background: #bde4f4;
   font-size: 15px;
   line-height: 22px;
   margin: 0 12px;

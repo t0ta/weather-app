@@ -122,7 +122,7 @@ function displayWeather(response) {
 
   let windElement = document.getElementById("wind");
   let wind = response.data.wind.speed;
-  windElement.innerHTML = `${wind} kph`;
+  windElement.innerHTML = `${wind} mph`;
 
   let dateElement = document.getElementById("date");
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
