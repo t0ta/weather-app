@@ -58,6 +58,7 @@ function formatForecastDay(timestemp) {
 }
 
 function displayForecast(response) {
+  console.log(response);
   let forecast = response.data.daily;
   let forecastElement = document.getElementById("forecast");
   let forecastHTML = `<div class="row">`;
@@ -78,10 +79,10 @@ function displayForecast(response) {
         }@2x.png" alt ="Weather icon"
         />
         <div class="weather-forecast">
-          <span class="weather-forecast-temp-max">${Math.round(
+          <span id="forecast-temp-max" class="weather-forecast-temp-max">${Math.round(
             forecastDay.temp.max
           )}°</span>
-          <span class="weather-forecast-temp-min">${Math.round(
+          <span id="forecast-temp-min" class="weather-forecast-temp-min">${Math.round(
             forecastDay.temp.min
           )}°</span>
         </div>
@@ -142,15 +143,6 @@ function catchSearchError(error) {
   if (error) {
     alert("Ops, city not found... Please, enter correct name");
   }
-
-  // let errorMessage = document.getElementById("error-message");
-  // form.addEventListener(error, function () {
-  //   if (errorMessage.classList.toString().includes("hidden")) {
-  //     errorMessage.classList.remove("hidden");
-  //   } else {
-  //     errorMessage.classList.add("hidden");
-  //   }
-  // });
 }
 
 function searchCity(city) {

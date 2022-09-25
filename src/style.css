@@ -95,9 +95,6 @@ body {
   color: #404969;
   cursor: default;
 }
-.hidden {
-  display: none;
-}
 .weather-forecast-header {
   font-size: 12px;
   margin: 8px 20px 20px 30px;
