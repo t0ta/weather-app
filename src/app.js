@@ -21,7 +21,7 @@ function formatDate(timestemp) {
   return `Updated: ${day}, ${hours}:${minutes}`;
 }
 
-function formatForecasdtDate(timestemp) {
+function formatForecastDate(timestemp) {
   let date = new Date(timestemp * 1000);
   let month = date.getMonth();
   let day = date.getDate();
@@ -58,7 +58,6 @@ function formatForecastDay(timestemp) {
 }
 
 function displayForecast(response) {
-  console.log(response);
   let forecast = response.data.daily;
   let forecastElement = document.getElementById("forecast");
   let forecastHTML = `<div class="row">`;
@@ -71,7 +70,7 @@ function displayForecast(response) {
         <div class="weather-forecast-weekday">${formatForecastDay(
           forecastDay.dt
         )}</div>
-          <div class="weather-forecast-date">${formatForecasdtDate(
+          <div class="weather-forecast-date">${formatForecastDate(
             forecastDay.dt
           )}</div>
         <img class="weather-forecast-icon" src="https://openweathermap.org/img/wn/${
@@ -158,24 +157,6 @@ function handleSubmit(event) {
   searchCity(cityInputElement.value);
 }
 
-function displayFahrenheitTemperature(event) {
-  event.preventDefault();
-
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let temperatureElement = document.getElementById("temperature");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
-
-function displayCelsiusTemperature(event) {
-  event.preventDefault();
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let temperatureElement = document.getElementById("temperature");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-}
-
 function displayNewYorkWeather(event) {
   event.preventDefault();
   searchCity("New York");
@@ -205,12 +186,6 @@ let celsiusTemperature = null;
 
 let form = document.getElementById("search-form");
 form.addEventListener("submit", handleSubmit);
-
-let fahrenheitLink = document.getElementById("fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
-
-let celsiusLink = document.getElementById("celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 let newYorkElement = document.getElementById("new-york");
 newYorkElement.addEventListener("click", displayNewYorkWeather);
