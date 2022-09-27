@@ -94,6 +94,7 @@ body {
 .displayed-temperature .active {
   color: #404969;
   cursor: default;
+  font-size: 25px;
 }
 .weather-forecast-header {
   font-size: 12px;
@@ -149,4 +150,7 @@ body {
   margin-top: 40px;
   opacity: 0.8;
   text-align: center;
+}
+.hidden {
+  display: none;
 }

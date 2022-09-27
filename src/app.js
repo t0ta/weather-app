@@ -57,12 +57,25 @@ function formatForecastDay(timestemp) {
   return days[day];
 }
 
+function convertToFahrenheit(temp) {
+  return Math.round((temp * 9) / 5 + 32);
+}
+
+let data = null;
+let isCelsius = true;
+
 function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.getElementById("forecast");
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
     if (index < 5) {
+      let forecastMaxTemp = forecastDay.temp.max;
+      let forecastMinTemp = forecastDay.temp.min;
+      if (!isCelsius) {
+        forecastMaxTemp = convertToFahrenheit(forecastMaxTemp);
+        forecastMinTemp = convertToFahrenheit(forecastMinTemp);
+      }
       forecastHTML =
         forecastHTML +
         `
@@ -78,11 +91,11 @@ function displayForecast(response) {
         }@2x.png" alt ="Weather icon"
         />
         <div class="weather-forecast">
-          <span id="forecast-temp-max" class="weather-forecast-temp-max">${Math.round(
-            forecastDay.temp.max
+          <span class="weather-forecast-temp-max">${Math.round(
+            forecastMaxTemp
           )}°</span>
-          <span id="forecast-temp-min" class="weather-forecast-temp-min">${Math.round(
-            forecastDay.temp.min
+          <span class="weather-forecast-temp-min">${Math.round(
+            forecastMinTemp
           )}°</span>
         </div>
     `;
@@ -97,7 +110,10 @@ function getForecast(coordinates) {
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
 
-  axios.get(apiUrl).then(displayForecast);
+  axios.get(apiUrl).then(function (response) {
+    displayForecast(response);
+    data = response;
+  });
 }
 
 function displayWeather(response) {
@@ -108,10 +124,10 @@ function displayWeather(response) {
   descriptionElement.innerHTML = response.data.weather[0].description;
 
   let temperatureElement = document.getElementById("temperature");
-  let temperature = Math.round(response.data.main.temp);
-  temperatureElement.innerHTML = temperature;
-
-  celsiusTemperature = response.data.main.temp;
+  celsiusTemperature = Math.round(response.data.main.temp);
+  temperatureElement.innerHTML = isCelsius
+    ? celsiusTemperature
+    : convertToFahrenheit(celsiusTemperature);
 
   let humidityElement = document.getElementById("humidity");
   let humidity = response.data.main.humidity;
@@ -157,6 +173,28 @@ function handleSubmit(event) {
   searchCity(cityInputElement.value);
 }
 
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let temperatureElement = document.getElementById("temperature");
+  let fahrenheitTemperature = convertToFahrenheit(celsiusTemperature);
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+  isCelsius = false;
+  displayForecast(data);
+}
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let temperatureElement = document.getElementById("temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  isCelsius = true;
+  displayForecast(data);
+}
+
 function displayNewYorkWeather(event) {
   event.preventDefault();
   searchCity("New York");
@@ -186,6 +224,12 @@ let celsiusTemperature = null;
 
 let form = document.getElementById("search-form");
 form.addEventListener("submit", handleSubmit);
+
+let fahrenheitLink = document.getElementById("fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusLink = document.getElementById("celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 let newYorkElement = document.getElementById("new-york");
 newYorkElement.addEventListener("click", displayNewYorkWeather);
