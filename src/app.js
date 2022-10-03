@@ -61,9 +61,6 @@ function convertToFahrenheit(temp) {
   return Math.round((temp * 9) / 5 + 32);
 }
 
-let data = null;
-let isCelsius = true;
-
 function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.getElementById("forecast");
@@ -175,7 +172,6 @@ function handleSubmit(event) {
 
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
-
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
   let temperatureElement = document.getElementById("temperature");
@@ -195,32 +191,64 @@ function displayCelsiusTemperature(event) {
   displayForecast(data);
 }
 
-function displayNewYorkWeather(event) {
-  event.preventDefault();
-  searchCity("New York");
-}
+window.addEventListener("load", function () {
+  let cityListElement = document.querySelectorAll(
+    "#new-york, #london, #tokyo, #sydney, #lisbon"
+  );
+  for (let i = 0; i < cityListElement.length; ++i) {
+    cityListElement[i].addEventListener("click", function (event) {
+      event.preventDefault();
+      document.querySelector("input[type=search]").value =
+        event.target.innerHTML;
+      let cityInputElement = document.getElementById("city-input");
+      searchCity(cityInputElement.value);
+    });
+  }
+});
 
-function displayLondonWeather(event) {
-  event.preventDefault();
-  searchCity("London");
-}
+// function displayNewYorkWeather(event) {
+//   event.preventDefault();
+//   searchCity("New York");
+// }
 
-function displayTokyoWeather(event) {
-  event.preventDefault();
-  searchCity("Tokyo");
-}
+// function displayLondonWeather(event) {
+//   event.preventDefault();
+//   searchCity("London");
+// }
 
-function displaySydneyWeather(event) {
-  event.preventDefault();
-  searchCity("Sydney");
-}
+// function displayTokyoWeather(event) {
+//   event.preventDefault();
+//   searchCity("Tokyo");
+// }
 
-function displayLisbonWeather(event) {
-  event.preventDefault();
-  searchCity("Lisbon");
-}
+// function displaySydneyWeather(event) {
+//   event.preventDefault();
+//   searchCity("Sydney");
+// }
+
+// function displayLisbonWeather(event) {
+//   event.preventDefault();
+//   searchCity("Lisbon");
+// }
+
+// let newYorkElement = document.getElementById("new-york");
+// newYorkElement.addEventListener("click", displayNewYorkWeather);
+
+// let londonElement = document.getElementById("london");
+// londonElement.addEventListener("click", displayLondonWeather);
+
+// let tokyoElement = document.getElementById("tokyo");
+// tokyoElement.addEventListener("click", displayTokyoWeather);
+
+// let sydneyElement = document.getElementById("sydney");
+// sydneyElement.addEventListener("click", displaySydneyWeather);
+
+// let lisbonElement = document.getElementById("lisbon");
+// lisbonElement.addEventListener("click", displayLisbonWeather);
 
 let celsiusTemperature = null;
+let data = null;
+let isCelsius = true;
 
 let form = document.getElementById("search-form");
 form.addEventListener("submit", handleSubmit);
@@ -230,20 +258,5 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 let celsiusLink = document.getElementById("celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
-
-let newYorkElement = document.getElementById("new-york");
-newYorkElement.addEventListener("click", displayNewYorkWeather);
-
-let londonElement = document.getElementById("london");
-londonElement.addEventListener("click", displayLondonWeather);
-
-let tokyoElement = document.getElementById("tokyo");
-tokyoElement.addEventListener("click", displayTokyoWeather);
-
-let sydneyElement = document.getElementById("sydney");
-sydneyElement.addEventListener("click", displaySydneyWeather);
-
-let lisbonElement = document.getElementById("lisbon");
-lisbonElement.addEventListener("click", displayLisbonWeather);
 
 searchCity("Kyiv");
