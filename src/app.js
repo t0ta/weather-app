@@ -191,60 +191,17 @@ function displayCelsiusTemperature(event) {
   displayForecast(data);
 }
 
-window.addEventListener("load", function () {
-  let cityListElement = document.querySelectorAll(
-    "#new-york, #london, #tokyo, #sydney, #lisbon"
-  );
-  for (let i = 0; i < cityListElement.length; ++i) {
-    cityListElement[i].addEventListener("click", function (event) {
-      event.preventDefault();
-      document.querySelector("input[type=search]").value =
-        event.target.innerHTML;
-      let cityInputElement = document.getElementById("city-input");
-      searchCity(cityInputElement.value);
-    });
-  }
-});
-
-// function displayNewYorkWeather(event) {
-//   event.preventDefault();
-//   searchCity("New York");
-// }
-
-// function displayLondonWeather(event) {
-//   event.preventDefault();
-//   searchCity("London");
-// }
-
-// function displayTokyoWeather(event) {
-//   event.preventDefault();
-//   searchCity("Tokyo");
-// }
-
-// function displaySydneyWeather(event) {
-//   event.preventDefault();
-//   searchCity("Sydney");
-// }
-
-// function displayLisbonWeather(event) {
-//   event.preventDefault();
-//   searchCity("Lisbon");
-// }
-
-// let newYorkElement = document.getElementById("new-york");
-// newYorkElement.addEventListener("click", displayNewYorkWeather);
-
-// let londonElement = document.getElementById("london");
-// londonElement.addEventListener("click", displayLondonWeather);
-
-// let tokyoElement = document.getElementById("tokyo");
-// tokyoElement.addEventListener("click", displayTokyoWeather);
-
-// let sydneyElement = document.getElementById("sydney");
-// sydneyElement.addEventListener("click", displaySydneyWeather);
-
-// let lisbonElement = document.getElementById("lisbon");
-// lisbonElement.addEventListener("click", displayLisbonWeather);
+let cityListElement = document.querySelectorAll(
+  "#new-york, #london, #tokyo, #sydney, #lisbon"
+);
+for (let i = 0; i < cityListElement.length; ++i) {
+  cityListElement[i].addEventListener("click", function (event) {
+    event.preventDefault();
+    document.querySelector("input[type=search]").value = event.target.innerHTML;
+    let cityInputElement = document.getElementById("city-input");
+    searchCity(cityInputElement.value);
+  });
+}
 
 let celsiusTemperature = null;
 let data = null;
