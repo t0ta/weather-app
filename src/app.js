@@ -76,14 +76,14 @@ function displayForecast(response) {
       forecastHTML =
         forecastHTML +
         `
-      <div class="col-2 card weather-forecast-card">
+      <div class="col-sm-2 card weather-forecast-card">
         <div class="weather-forecast-weekday">${formatForecastDay(
           forecastDay.dt
         )}</div>
           <div class="weather-forecast-date">${formatForecastDate(
             forecastDay.dt
           )}</div>
-        <img class="weather-forecast-icon" src="https://openweathermap.org/img/wn/${
+        <img class="weather-forecast-icon img-fluid" src="https://openweathermap.org/img/wn/${
           forecastDay.weather[0].icon
         }@2x.png" alt ="Weather icon"
         />
